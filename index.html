@@ -8,13 +8,22 @@
   <title>Bioferia 2027 — − OCUPA + SUCEDE</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Montserrat:wght@500;700;900&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="vendor/lenis.css">
+  <link rel="stylesheet" href="styles.css?v=motion-2">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
-  <script src="script.js" defer></script>
+  <script src="vendor/gsap.min.js" defer></script>
+  <script src="vendor/ScrollTrigger.min.js" defer></script>
+  <script src="vendor/lenis.min.js" defer></script>
+  <script src="script.js?v=motion-2" defer></script>
+  <script src="animations.js?v=motion-2" defer></script>
 </head>
 <body>
+  <div class="opening-intro" aria-hidden="true">
+    <div class="opening-intro-circle"></div>
+    <img class="opening-intro-logo" src="assets/logo-lime.png" alt="" width="280">
+  </div>
   <a href="#main" class="skip-link">Ir al contenido</a>
   <div id="cursorHalo" class="cursor-halo" aria-hidden="true"></div>
 
@@ -29,6 +38,7 @@
           <li class="nav-item"><a class="nav-link" href="#entradas">Entradas</a></li>
           <li class="nav-item"><a class="nav-link" href="#merch">Merch</a></li>
           <li class="nav-item"><a class="nav-link" href="#info">Info útil</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
         </ul>
         <a class="btn btn-primary-custom nav-cta" href="#entradas">Quiero ir ↗</a>
       </div>
@@ -47,18 +57,16 @@
         <div class="hero-content reveal">
           <div class="eyebrow"><span class="live-dot"></span> EDICIÓN 2027 <span class="tiny-line"></span> UN FESTIVAL PARA DESCUBRIR</div>
           <h1 class="hero-title slogan-lockup" aria-label="− OCUPA + SUCEDE">
-            <img class="slogan-base" src="assets/slogan-blue.png" alt="− OCUPA + SUCEDE">
-            <img class="slogan-over" src="assets/slogan-lime.png" alt="" aria-hidden="true">
+            <img class="slogan-base" src="assets/tagline.webp" alt="− OCUPA + SUCEDE" fetchpriority="high" decoding="async">
+            <img class="slogan-over" src="assets/tagline.webp" alt="" aria-hidden="true">
           </h1>
           <p class="hero-sub">Pequeñas decisiones. Nuevas posibilidades. Vení a descubrir una manera diferente de vivir, compartir y transformar.</p>
-          <div class="hero-actions"><a class="btn btn-primary-custom btn-large" href="#entradas">Conseguí tu entrada ↗</a><a class="text-link" href="#experiencia">Explorá Bioferia ↓</a></div>
+          <div class="hero-actions"><a class="btn btn-primary-custom btn-large" href="#entradas">Conseguí tu entrada ↗</a><a class="text-link" href="#experiencia">Explorá Bioferia ↓</a></div><p class="hero-meta">9 · 10 · 11 DE ABRIL 2027 <span aria-hidden="true">·</span> HIPÓDROMO DE PALERMO, BUENOS AIRES</p>
         </div>
-        <div class="hero-visual reveal" aria-hidden="true">
+        <div class="hero-visual" aria-hidden="true">
           <div class="visual-disc">
-            <div class="disc-inner"><img class="circle-logo" src="assets/logo-blue.png" alt="Bioferia"></div>
+            <div class="disc-inner"></div>
           </div>
-          <span class="floating-tag tag-top">01 / 2027</span>
-          <span class="floating-tag tag-bottom">ALGO NUEVO EMPIEZA ACÁ ↗</span>
           <div class="ring ring-a"></div><div class="ring ring-b"></div>
         </div>
       </div>
@@ -67,80 +75,118 @@
 
     <section id="experiencia" class="section-space experience-section">
       <div class="container-xl">
-        <div class="row align-items-start g-4">
-          <div class="col-lg-7 reveal">
-            <p class="section-kicker">01 / LA EXPERIENCIA</p>
-            <h2 class="display-heading mask-reveal">VENÍ POR <span class="accent-blue">CURIOSIDAD</span><br>ANDATE CON <span class="accent-blue">IDEAS</span></h2>
-          </div>
-          <div class="col-lg-5 reveal">
-            <figure class="experience-photo mb-4"><img src="assets/evento-bioferia.jpg" alt="Personas disfrutando una jornada en Bioferia"></figure>
+        <p class="section-kicker reveal">01 / LA EXPERIENCIA</p>
+        <div class="experience-layout">
+          <div class="experience-copy reveal">
+            <h2 class="display-heading experience-title"><span>EL PUNTO QUE</span><span>NOS CONECTA</span></h2>
             <p class="lead-text">Bioferia es un punto de encuentro para explorar ideas, descubrir marcas, probar cosas nuevas y disfrutar un día distinto. No hace falta saber de sustentabilidad: <strong>solo tener ganas de venir.</strong></p>
+<p class="lead-text">Recorré la feria a tu ritmo, conversá con quienes crean nuevas alternativas y encontrá ideas para tu vida cotidiana. Entre una charla, algo rico y una canción, también hay tiempo para encontrarse.</p>
+          </div>
+          <div class="event-gallery reveal" role="region" aria-roledescription="carrusel" aria-label="Fotos de Bioferia">
+            <div class="gallery-slides">
+              <img class="gallery-slide is-active" src="assets/evento-bioferia.jpg" alt="Personas disfrutando una jornada en Bioferia" width="1600" height="900" decoding="async">
+              <img class="gallery-slide" src="assets/evento-galeria-02.jpg" alt="Visitantes compartiendo la gastronomía al aire libre en Bioferia" width="1200" height="800" decoding="async" aria-hidden="true">
+              <img class="gallery-slide" src="assets/evento-mercado-vegano.png" alt="Mercado vegano al aire libre entre puestos y vegetación" width="1536" height="1024" decoding="async" aria-hidden="true">
+              <img class="gallery-slide" src="assets/evento-charla-comunidad.png" alt="Charla sobre sustentabilidad en un espacio abierto a la comunidad" width="1536" height="1024" decoding="async" aria-hidden="true">
+              <img class="gallery-slide" src="assets/evento-encuentro-atardecer.png" alt="Encuentro al atardecer con música y espacios de descanso" width="1024" height="1536" decoding="async" aria-hidden="true">
+            </div>
+            <div class="gallery-controls">
+              <button type="button" class="gallery-arrow" data-gallery-prev aria-label="Foto anterior">←</button>
+              <div class="gallery-dots" aria-label="Elegir foto"><button type="button" data-gallery-index="0" aria-label="Ver foto 1" aria-current="true"></button><button type="button" data-gallery-index="1" aria-label="Ver foto 2"></button><button type="button" data-gallery-index="2" aria-label="Ver foto 3"></button><button type="button" data-gallery-index="3" aria-label="Ver foto 4"></button><button type="button" data-gallery-index="4" aria-label="Ver foto 5"></button></div>
+              <button type="button" class="gallery-arrow" data-gallery-next aria-label="Foto siguiente">→</button>
+            </div>
           </div>
         </div>
         <div class="row g-3 mt-4">
-          <div class="col-md-4 reveal"><article class="feature-card feature-card-dark"><span class="feature-index">01 / EXPLORÁ</span><div class="feature-circle">↗</div><h3 class="mask-reveal">ALGO PARA<br>DESCUBRIR</h3><p>Emprendimientos, propuestas y alternativas que te van a sorprender.</p></article></div>
-          <div class="col-md-4 reveal"><article class="feature-card feature-card-light"><span class="feature-index">02 / PARTICIPÁ</span><div class="feature-circle">✳</div><h3 class="mask-reveal">ALGO PARA<br>HACER</h3><p>Talleres, actividades y experiencias para aprender probando.</p></article></div>
-          <div class="col-md-4 reveal"><article class="feature-card feature-card-blue"><span class="feature-index">03 / COMPARTÍ</span><div class="feature-circle">◎</div><h3 class="mask-reveal">ALGO PARA<br>VIVIR</h3><p>Gastronomía, música, encuentros y momentos para compartir.</p></article></div>
+          <div class="col-md-4 reveal"><article class="feature-card feature-card-dark"><span class="feature-index">01 / EXPLORÁ</span><img class="feature-photo" src="assets/planta.png" alt="Una planta crece entre las manos" width="320" height="320" loading="lazy" decoding="async"><h3 class="mask-reveal">Descubrir</h3><p>Conocé a las personas detrás de cada emprendimiento. Descubrí cómo se hacen los productos, qué materiales eligen y qué decisiones abren otras maneras de consumir.</p></article></div>
+          <div class="col-md-4 reveal"><article class="feature-card feature-card-light"><span class="feature-index">02 / PARTICIPÁ</span><img class="feature-photo" src="assets/pintura.png" alt="Estampado con hojas naturales" width="320" height="320" loading="lazy" decoding="async"><h3 class="mask-reveal">Participar</h3><p>Acercate a un taller, hacé preguntas y probá algo por primera vez. Las experiencias participativas invitan a aprender haciendo, con propuestas para distintas edades e intereses.</p></article></div>
+          <div class="col-md-4 reveal"><article class="feature-card feature-card-blue"><span class="feature-index">03 / COMPARTÍ</span><img class="feature-photo" src="assets/Danza y música entre la naturaleza.png" alt="Música entre la naturaleza" width="320" height="320" loading="lazy" decoding="async"><h3 class="mask-reveal">Compartir</h3><p>Hacé una pausa para comer algo rico, escuchar música y compartir el día. Vení con amigos, en familia o por tu cuenta: siempre hay una nueva conversación por empezar.</p></article></div>
         </div>
+        <section class="event-marquee reveal" aria-label="Fotos de experiencias en Bioferia">
+          <div class="marquee-lane" aria-label="Fotos de experiencias en Bioferia">
+            <div class="marquee-track">
+              <div class="marquee-group">
+                <img src="assets/planta.png" alt="Una planta crece entre las manos" width="240" height="240" loading="lazy" decoding="async">
+                <img src="assets/tierra.png" alt="Taller de plantas y terrarios" width="240" height="240" loading="lazy" decoding="async">
+                <img src="assets/pintura.png" alt="Estampado con hojas naturales" width="240" height="240" loading="lazy" decoding="async">
+                <img src="assets/yoga.png" alt="Yoga al aire libre" width="240" height="240" loading="lazy" decoding="async">
+                <img src="assets/comida.png" alt="Gastronomía a base de plantas" width="240" height="240" loading="lazy" decoding="async">
+              </div>
+              <div class="marquee-group" aria-hidden="true">
+                <img src="assets/planta.png" alt="" width="240" height="240" loading="lazy" decoding="async">
+                <img src="assets/tierra.png" alt="" width="240" height="240" loading="lazy" decoding="async">
+                <img src="assets/pintura.png" alt="" width="240" height="240" loading="lazy" decoding="async">
+                <img src="assets/yoga.png" alt="" width="240" height="240" loading="lazy" decoding="async">
+                <img src="assets/comida.png" alt="" width="240" height="240" loading="lazy" decoding="async">
+              </div>
+            </div>
+          </div>
+          <div class="marquee-lane marquee-lane-reverse" aria-hidden="true">
+            <div class="marquee-track">
+              <div class="marquee-group">
+                <img src="assets/comida.png" alt="Gastronomía a base de plantas" width="240" height="240" loading="lazy" decoding="async">
+                <img src="assets/flor.png" alt="Detalle de una flor" width="240" height="240" loading="lazy" decoding="async">
+                <img src="assets/edicion de fotos.png" alt="Papel artesanal con flores" width="240" height="240" loading="lazy" decoding="async">
+                <img src="assets/actvidad.png" alt="Taller de cerámica" width="240" height="240" loading="lazy" decoding="async">
+                <img src="assets/Danza y música entre la naturaleza.png" alt="Música entre la naturaleza" width="240" height="240" loading="lazy" decoding="async">
+              </div>
+              <div class="marquee-group" aria-hidden="true">
+                <img src="assets/comida.png" alt="" width="240" height="240" loading="lazy" decoding="async">
+                <img src="assets/flor.png" alt="" width="240" height="240" loading="lazy" decoding="async">
+                <img src="assets/edicion de fotos.png" alt="" width="240" height="240" loading="lazy" decoding="async">
+                <img src="assets/actvidad.png" alt="" width="240" height="240" loading="lazy" decoding="async">
+                <img src="assets/Danza y música entre la naturaleza.png" alt="" width="240" height="240" loading="lazy" decoding="async">
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     </section>
 
     <section class="statement-section">
+      <div class="statement-circles" aria-hidden="true"><span></span><span></span><span></span></div>
       <div class="container-xl statement-wrap reveal">
         <span class="small-index">EL CAMBIO EMPIEZA EN CUALQUIER LUGAR</span>
-        <h2 class="statement-text mask-reveal">NO TENÉS QUE<br>HACERLO TODO<br><span class="accent-blue">TENÉS QUE EMPEZAR</span></h2>
-        <p>Un paso pequeño puede activar algo mucho más grande.</p>
+        <h2 class="statement-text mask-reveal">Todo empieza<br>con algo pequeño</h2>
+        <p>Una conversación puede cambiar una costumbre. Un taller puede despertar una idea. Bioferia reúne esas pequeñas posibilidades en un mismo lugar, para que encuentres tu propia forma de empezar y te lleves algo que siga creciendo después del festival.</p>
       </div>
     </section>
 
     <section id="programacion" class="section-space program-section">
+      <div class="program-circles" aria-hidden="true"><span></span><span></span></div>
       <div class="container-xl">
-        <div class="section-top reveal">
-          <div>
-            <p class="section-kicker">02 / PARA ORGANIZAR TU VISITA</p>
-            <h2 class="display-heading mask-reveal">CADA DÍA,<br><span class="accent-blue">ALGO NUEVO</span></h2>
-          </div>
-        </div>
-        <div class="program-grid row g-3 mt-3">
-          <div class="col-lg-4 reveal"><article class="day-card"><div class="day-card-top"><span>DÍA 01</span><span>↗</span></div><h3 class="mask-reveal">EXPLORAR</h3><p>Para quienes vienen a descubrir todo lo que Bioferia tiene para ofrecer.</p><ul><li>Feria de marcas y emprendimientos</li><li>Experiencias participativas</li><li>Espacios gastronómicos</li></ul><span class="pill">VIERNES · FECHA A CONFIRMAR</span></article></div>
-          <div class="col-lg-4 reveal"><article class="day-card featured-day"><div class="day-card-top"><span>DÍA 02</span><span>↗</span></div><h3 class="mask-reveal">PROBAR</h3><p>Un día para ensuciarse las manos, preguntar y aprender haciendo.</p><ul><li>Talleres y demostraciones</li><li>Charlas e ideas inspiradoras</li><li>Activaciones y propuestas</li></ul><span class="pill">SÁBADO · FECHA A CONFIRMAR</span></article></div>
-          <div class="col-lg-4 reveal"><article class="day-card"><div class="day-card-top"><span>DÍA 03</span><span>↗</span></div><h3 class="mask-reveal">COMPARTIR</h3><p>Para disfrutar, encontrarse y llevarse nuevas ideas a casa.</p><ul><li>Música y encuentros</li><li>Propuestas para todas las edades</li><li>Último recorrido por la feria</li></ul><span class="pill">DOMINGO · FECHA A CONFIRMAR</span></article></div>
-        </div>
+        <div class="program-heading reveal"><p class="section-kicker">02 / TRES DÍAS PARA ENCONTRARNOS</p><h2 class="display-heading">Elegí tu día<br>Viví Bioferia</h2></div>
+        <div class="shared-experience reveal"><div><span class="section-kicker">EN LOS TRES DÍAS</span><h3>Todo esto te espera, vengas cuando vengas</h3><p>En cualquiera de las jornadas podés recorrer la feria, conocer emprendimientos, disfrutar de la gastronomía y encontrar propuestas para participar. Cada día reúne música, charlas y actividades: elegí el que mejor se acomode a vos.</p></div><ul class="shared-list"><li>Feria de marcas y emprendimientos</li><li>Gastronomía y espacios para encontrarse</li><li>Talleres y experiencias participativas</li><li>Charlas, música y actividades para compartir</li></ul></div>
+        <div class="program-grid row g-3 mt-3"><div class="col-lg-4 reveal"><article class="day-card"><div class="day-card-top"><span>DÍA 01</span><span class="day-orb" aria-hidden="true"></span></div><h3>Viernes</h3><p>Abrí el fin de semana con un recorrido por la feria y una agenda de invitados y conversaciones para descubrir a tu ritmo.</p><ul><li><strong>Bandas y artistas:</strong> Ainda y El Kuelgue.</li><li><strong>Charlas:</strong> “Menos residuos, más posibilidades” y “Consumir local: conocer a quienes producen”.</li><li><strong>Actividades especiales:</strong> taller de compostaje en casa e intercambio de semillas para empezar tu huerta.</li></ul><p class="day-common">+ Toda la experiencia compartida de Bioferia.</p><span class="pill">VIERNES 2 DE ABRIL DE 2027</span></article></div><div class="col-lg-4 reveal"><article class="day-card"><div class="day-card-top"><span>DÍA 02</span><span class="day-orb" aria-hidden="true"></span></div><h3>Sábado</h3><p>Hacé lugar para un día de encuentros. A la propuesta compartida se suma una nueva selección de artistas, charlas y actividades.</p><ul><li><strong>Bandas y artistas:</strong> Silvestre y La Naranja y Zoe Gotusso.</li><li><strong>Charlas:</strong> “Moda circular: la segunda vida de tu ropa” y “Alimentación a base de plantas, sin complicarse”.</li><li><strong>Actividades especiales:</strong> laboratorio de reparación y customización textil, y cocina participativa de estación.</li></ul><p class="day-common">+ Toda la experiencia compartida de Bioferia.</p><span class="pill">SÁBADO 3 DE ABRIL DE 2027</span></article></div><div class="col-lg-4 reveal"><article class="day-card"><div class="day-card-top"><span>DÍA 03</span><span class="day-orb" aria-hidden="true"></span></div><h3>Domingo</h3><p>Disfrutá el domingo entre sabores, ideas y música. La feria y los espacios de participación siguen presentes junto con los invitados de esta jornada.</p><ul><li><strong>Bandas y artistas:</strong> Perotá Chingó y Raly Barrionuevo.</li><li><strong>Charlas:</strong> “Regenerar la ciudad: naturaleza en cada barrio” y “Comunidades que transforman lo cotidiano”.</li><li><strong>Actividades especiales:</strong> creación de bombas de semillas con especies nativas y yoga suave con música en vivo.</li></ul><p class="day-common">+ Toda la experiencia compartida de Bioferia.</p><span class="pill">DOMINGO 4 DE ABRIL DE 2027</span></article></div></div>
       </div>
-    </section>
-
-    <section class="circle-field-section" aria-label="Un cambio pequeño puede expandirse">
-      <div class="circle-field" id="circleField" aria-hidden="true"></div>
-      <div class="circle-field-content reveal"><span>UN CAMBIO PEQUEÑO</span><h2 class="mask-reveal">PUEDE<br>EXPANDIRSE</h2></div>
     </section>
 
     <section id="entradas" class="section-space tickets-section">
       <div class="container-xl">
-        <div class="row align-items-center g-5">
-          <div class="col-lg-6 reveal">
+        <div class="ticket-layout">
+          <div class="ticket-copy reveal">
             <p class="section-kicker">03 / ASEGURÁ TU LUGAR</p>
-            <h2 class="display-heading mask-reveal">LO MEJOR<br>ES <span class="accent-blue">ESTAR</span></h2>
-            <p class="ticket-intro">Elegí cómo querés vivir Bioferia. Un día para descubrir o un pase completo para no perderte nada.</p>
-            <div class="ticket-perks"><span>✳ Experiencias</span><span>✳ Talleres</span><span>✳ Feria</span></div>
-            <button class="btn btn-dark-custom btn-large" type="button" data-ticket-open>Conseguí tus entradas ↗</button>
+            <h2 class="display-heading mask-reveal">¿Qué estás esperando?<br>Conseguí tu entrada</h2>
+            <p class="ticket-intro">Viví la feria, los sabores y la música en un día.<br>Con el pase de tres días, volvé por más actividades e invitados.</p>
           </div>
-          <div class="col-lg-6 reveal">
-            <div class="ticket-art ticket-brand-panel">
-              <div class="ticket-hole hole-left"></div><div class="ticket-hole hole-right"></div>
-              <div class="ticket-art-top"><span>EDICIÓN<br>2027</span><span>ACCESO A LA EXPERIENCIA ↗</span></div>
-              <div class="ticket-brand-inner"><img class="ticket-brand-logo" src="assets/logo-white.png" alt="Bioferia"><img class="ticket-brand-slogan" src="assets/slogan-white.png" alt="− OCUPA + SUCEDE"></div>
-              <div class="ticket-art-bottom"><span></span><span>✳ ✳ ✳</span></div>
+          <div class="ticket-stack-wrap reveal">
+            <div class="ticket-stack">
+              <img class="ticket-entry-image ticket-stack-back" src="assets/entrada-bioferia-transparente.png" alt="" aria-hidden="true" width="2172" height="724" loading="lazy" decoding="async">
+              <img class="ticket-entry-image ticket-stack-middle" src="assets/entrada-bioferia-transparente.png" alt="" aria-hidden="true" width="2172" height="724" loading="lazy" decoding="async">
+              <img class="ticket-entry-image ticket-stack-front" src="assets/entrada-bioferia-transparente.png" alt="Entrada general de Bioferia: − OCUPA + SUCEDE" width="2172" height="724" loading="lazy" decoding="async">
             </div>
           </div>
+          <button class="btn btn-dark-custom btn-large reveal" type="button" data-ticket-open>Conseguí tu entrada ↗</button>
         </div>
       </div>
     </section>
 
     <section id="merch" class="section-space merch-section">
       <div class="container-xl">
-        <div class="section-top reveal">
-          <div><p class="section-kicker">04 / LLEVATE ALGO DE BIOFERIA</p><h2 class="display-heading mask-reveal">OBJETOS CON<br><span class="accent-blue">OTRA HISTORIA</span></h2></div>
-          <p class="section-side-note">Cinco piezas de edición especial.<br>Elegí tu favorita.</p>
+        <div class="merch-heading reveal">
+          <p class="section-kicker">04 / LLEVATE ALGO DE BIOFERIA</p>
+          <h2 class="display-heading mask-reveal">Ideas que te acompañan</h2>
+          <p class="merch-subtitle">Cinco piezas de edición especial. Elegí tu favorita.</p>
         </div>
         <div class="row row-cols-2 row-cols-lg-5 g-3 mt-3" id="merchGrid"></div>
       </div>
@@ -148,21 +194,41 @@
 
     <section class="particle-transition" aria-label="Lo que empieza pequeño puede multiplicarse">
       <canvas id="particleCanvas" aria-hidden="true"></canvas>
-      <div class="particle-transition-copy"><p>UNA ACCIÓN.</p><h2 class="mask-reveal">MUCHAS POSIBILIDADES</h2><img class="inline-logo" src="assets/logo-white.png" alt="Bioferia"></div>
+      <div class="particle-transition-copy"><p>UNA ACCIÓN</p><h2 class="mask-reveal">MUCHAS POSIBILIDADES</h2><img class="inline-logo" src="assets/logo-white.png" alt="Bioferia"></div>
     </section>
 
     <section id="info" class="section-space faq-section">
       <div class="container-xl">
         <div class="row g-5">
-          <div class="col-lg-5 reveal"><p class="section-kicker">05 / ANTES DE VENIR</p><h2 class="display-heading mask-reveal">TODO LO QUE<br><span class="accent-blue">NECESITÁS</span></h2><p class="lead-text mt-3">Respuestas rápidas para disfrutar la experiencia desde el primer momento.</p></div>
+          <div class="col-lg-5 reveal"><p class="section-kicker">05 / ANTES DE VENIR</p><h2 class="display-heading mask-reveal">TODO LO QUE <span class="accent-blue">NECESITÁS</span></h2><p class="lead-text mt-3">Respuestas rápidas para disfrutar la experiencia desde el primer momento.</p></div>
           <div class="col-lg-7 reveal">
             <div class="accordion accordion-flush" id="faqAccordion">
-              <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">¿Cuándo y dónde es Bioferia 2027?</button></h3><div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion"><div class="accordion-body">Las fechas exactas, la sede y los horarios de la edición 2027 se publicarán cuando estén confirmados.</div></div></div>
+              <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">¿Cuándo y dónde es Bioferia 2027?</button></h3><div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion"><div class="accordion-body">Bioferia BA 2027 será el 9, 10 y 11 de abril en el Hipódromo de Palermo, Buenos Aires. Consultá los canales oficiales para conocer horarios y novedades.</div></div></div>
               <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">¿Necesito saber sobre sustentabilidad para ir?</button></h3><div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">Para nada. Bioferia es para quienes tienen curiosidad, quieren conocer propuestas nuevas o simplemente disfrutar un plan diferente.</div></div></div>
-              <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">¿Hay talleres y actividades?</button></h3><div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">Sí, la propuesta del festival contempla experiencias, charlas, espacios gastronómicos y actividades. El cronograma definitivo de 2027 se anunciará más adelante.</div></div></div>
-              <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">¿Puedo elegir una entrada o productos desde acá?</button></h3><div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">Podés elegir la entrada o el producto que más te guste y consultar sus opciones.</div></div></div>
+              <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">¿Hay talleres y actividades?</button></h3><div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">Sí, la propuesta del festival contempla experiencias, charlas, espacios gastronómicos y actividades. Podés explorar una programación ilustrativa de música, charlas y actividades en la sección de cada día.</div></div></div>
+              <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">¿Puedo elegir una entrada o productos desde acá?</button></h3><div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">Esta página es una propuesta de muestra: los selectores de entradas y merch son ilustrativos y no procesan compras reales.</div></div></div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="section-space contact-section">
+      <div class="container-xl">
+        <div class="contact-layout">
+          <div class="contact-copy reveal"><p class="section-kicker">HABLEMOS</p><h2 class="display-heading contact-title"><span>¿Sos sponsor,</span><span>expositor o prensa?</span></h2><p class="contact-intro">Contanos qué te trae por acá y el equipo de Bioferia podrá conocer tu propuesta.</p><a class="contact-email" href="mailto:comercial@bioferia.info">comercial@bioferia.info ↗</a></div>
+          <form id="contactForm" class="contact-form reveal">
+            <p class="contact-required">Los campos con <span aria-hidden="true">*</span> son obligatorios</p>
+            <div class="contact-form-grid">
+              <div><label for="contactType">Quiero conversar sobre <span aria-hidden="true">*</span></label><select class="form-select" id="contactType" name="Tipo de consulta" required><option value="" selected disabled>Elegí una opción</option><option>Sponsoreo</option><option>Exposición</option><option>Prensa</option><option>Otra consulta</option></select></div>
+              <div><label for="contactName">Nombre y apellido <span aria-hidden="true">*</span></label><input class="form-control" id="contactName" name="Nombre" autocomplete="name" required></div>
+              <div><label for="contactEmail">Correo electrónico <span aria-hidden="true">*</span></label><input class="form-control" id="contactEmail" name="Correo" type="email" autocomplete="email" required></div>
+              <div><label for="contactOrganization">Marca, organización o medio</label><input class="form-control" id="contactOrganization" name="Organización" autocomplete="organization"></div>
+              <div class="contact-message"><label for="contactMessage">Tu mensaje <span aria-hidden="true">*</span></label><textarea class="form-control" id="contactMessage" name="Mensaje" rows="4" required></textarea></div>
+            </div>
+            <button class="btn btn-primary-custom btn-large" type="submit"><span>Preparar consulta</span><span aria-hidden="true">↗</span></button>
+            <p id="contactStatus" class="contact-status" role="status" aria-live="polite">El formulario abrirá tu aplicación de correo para que puedas revisar y enviar el mensaje.</p>
+          </form>
         </div>
       </div>
     </section>
@@ -170,12 +236,24 @@
 
   <footer class="site-footer">
     <div class="container-xl">
-      <div class="footer-upper"><div><img src="assets/logo-blue.png" alt="Bioferia" class="footer-logo"><p>Un pequeño cambio abre un mundo de posibilidades.</p></div><div class="footer-links"><a href="#experiencia">Experiencia</a><a href="#programacion">Programación</a><a href="#entradas">Entradas</a><a href="#merch">Merch</a><a href="#info">Info útil</a></div></div>
-      <div class="footer-bottom"><span>© BIOFERIA 2027</span><img class="footer-mark" src="assets/logo-lime.png" alt="Bioferia"><a href="#inicio">VOLVER ARRIBA ↑</a></div>
+      <div class="footer-bottom">
+        <span>© BIOFERIA 2027</span>
+        <div class="footer-socials" role="group" aria-label="Redes sociales">
+          <a class="footer-social" href="https://www.instagram.com/bioferia.sucede_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Bioferia (abre en otra pestaña)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg>Instagram</a>
+          <a class="footer-social" href="https://www.facebook.com/profile.php?id=61595725004892" target="_blank" rel="noopener noreferrer" aria-label="Facebook de Bioferia (abre en otra pestaña)"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047v-2.66c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.971h-1.513c-1.491 0-1.956.931-1.956 1.887v2.263h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073Z"></path></svg>Facebook</a>
+        </div>
+        <a href="#inicio">VOLVER ARRIBA ↑</a>
+      </div>
     </div>
   </footer>
 
   <div class="modal fade" id="purchaseModal" tabindex="-1" aria-labelledby="purchaseTitle" aria-hidden="true"><div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content"><div class="modal-header"><div><p class="modal-kicker" id="purchaseKicker">BIOFERIA 2027</p><h2 class="modal-title" id="purchaseTitle">Tu experiencia</h2></div><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button></div><div class="modal-body" id="purchaseBody"></div><div class="modal-footer"><button class="btn btn-dark-custom" id="confirmSelection" type="button">Continuar ↗</button></div></div></div></div>
   <div class="toast-container position-fixed bottom-0 end-0 p-3"><div id="successToast" class="toast" role="status" aria-live="polite" aria-atomic="true"><div class="toast-header"><strong class="me-auto">BIOFERIA ✳</strong><button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Cerrar"></button></div><div class="toast-body" id="toastMessage"></div></div></div>
+  <dialog id="merchLightbox" class="merch-lightbox" aria-label="Imagen ampliada del producto">
+    <button type="button" class="lightbox-close" aria-label="Cerrar imagen ampliada">✕</button>
+    <button type="button" class="lightbox-prev" aria-label="Ver imagen anterior">←</button>
+    <button type="button" class="lightbox-size" aria-pressed="false">Ver al 100 %</button><figure><div class="lightbox-viewport"><img id="lightboxImage" alt=""></div><figcaption id="lightboxCaption" aria-live="polite"></figcaption></figure>
+    <button type="button" class="lightbox-next" aria-label="Ver imagen siguiente">→</button>
+  </dialog>
 </body>
 </html>
