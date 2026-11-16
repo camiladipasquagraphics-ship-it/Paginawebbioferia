@@ -97,6 +97,51 @@
             </div>
           </div>
         </div>
+        <section id="descubri" class="discovery-section" aria-labelledby="discovery-heading">
+          <header class="discovery-header">
+            <p class="section-kicker">DESCUBRÍ TU PRÓXIMA EXPERIENCIA</p>
+            <h2 id="discovery-heading">¿QUÉ TENÉS GANAS<br>DE DESCUBRIR?</h2>
+            <p class="discovery-intro">Explorá nuevas experiencias y encontrá tu próximo favorito.</p>
+          </header>
+          <div class="discovery-orbits" role="group" aria-label="Elegí una experiencia" aria-describedby="discovery-help" hidden>
+            <button class="discovery-orbit discovery-music" id="discovery-button-music" type="button" aria-expanded="false" aria-controls="discovery-panel-music" data-discovery="music">
+              <span class="discovery-face"><img src="assets/Danza y música entre la naturaleza.png" alt="" width="1122" height="1402" loading="lazy" decoding="async"><span class="discovery-number" aria-hidden="true">01</span><span class="discovery-label">MÚSICA</span><span class="discovery-sign" aria-hidden="true">↗</span></span>
+            </button>
+            <button class="discovery-orbit discovery-food" id="discovery-button-food" type="button" aria-expanded="false" aria-controls="discovery-panel-food" data-discovery="food">
+              <span class="discovery-face"><img src="assets/comida.png" alt="" width="1122" height="1402" loading="lazy" decoding="async"><span class="discovery-number" aria-hidden="true">02</span><span class="discovery-label">GASTRONOMÍA</span><span class="discovery-sign" aria-hidden="true">↗</span></span>
+            </button>
+            <button class="discovery-orbit discovery-design" id="discovery-button-design" type="button" aria-expanded="false" aria-controls="discovery-panel-design" data-discovery="design">
+              <span class="discovery-face"><img src="assets/pintura.png" alt="" width="1122" height="1402" loading="lazy" decoding="async"><span class="discovery-number" aria-hidden="true">03</span><span class="discovery-label">DISEÑO</span><span class="discovery-sign" aria-hidden="true">↗</span></span>
+            </button>
+            <button class="discovery-orbit discovery-wellness" id="discovery-button-wellness" type="button" aria-expanded="false" aria-controls="discovery-panel-wellness" data-discovery="wellness">
+              <span class="discovery-face"><img src="assets/yoga.png" alt="" width="1122" height="1402" loading="lazy" decoding="async"><span class="discovery-number" aria-hidden="true">04</span><span class="discovery-label">BIENESTAR</span><span class="discovery-sign" aria-hidden="true">↗</span></span>
+            </button>
+          </div>
+          <div class="discovery-stage">
+            <div class="discovery-idle" hidden>
+              <span class="discovery-seed" aria-hidden="true">+</span>
+              <div><p class="discovery-manifesto">MENOS OCUPA, MÁS SUCEDE.</p><p id="discovery-help">Elegí un círculo. Abrí una nueva posibilidad.</p></div>
+            </div>
+            <article id="discovery-panel-music" class="discovery-panel discovery-music" aria-labelledby="discovery-title-music">
+              <span class="discovery-panel-index" aria-hidden="true">01 / 04</span>
+              <div class="discovery-copy"><h3 id="discovery-title-music">DESCUBRÍ NUEVOS SONIDOS</h3><p>Encontrá artistas, shows y propuestas musicales que pueden convertirse en tus próximos favoritos.</p><a class="discovery-more" href="#programacion">Descubrí más <span aria-hidden="true">↗</span><span class="visually-hidden"> sobre música en la programación</span></a></div>
+            </article>
+            <article id="discovery-panel-food" class="discovery-panel discovery-food" aria-labelledby="discovery-title-food">
+              <span class="discovery-panel-index" aria-hidden="true">02 / 04</span>
+              <div class="discovery-copy"><h3 id="discovery-title-food">PROBÁ ALGO DIFERENTE</h3><p>Descubrí nuevos sabores, emprendimientos gastronómicos y propuestas para disfrutar.</p><a class="discovery-more" href="#programacion">Descubrí más <span aria-hidden="true">↗</span><span class="visually-hidden"> sobre gastronomía en la programación</span></a></div>
+            </article>
+            <article id="discovery-panel-design" class="discovery-panel discovery-design" aria-labelledby="discovery-title-design">
+              <span class="discovery-panel-index" aria-hidden="true">03 / 04</span>
+              <div class="discovery-copy"><h3 id="discovery-title-design">IDEAS QUE INSPIRAN</h3><p>Conocé marcas, creadores y proyectos que proponen nuevas maneras de diseñar y consumir.</p><a class="discovery-more" href="#merch">Descubrí más <span aria-hidden="true">↗</span><span class="visually-hidden"> en la colección de Bioferia</span></a></div>
+            </article>
+            <article id="discovery-panel-wellness" class="discovery-panel discovery-wellness" aria-labelledby="discovery-title-wellness">
+              <span class="discovery-panel-index" aria-hidden="true">04 / 04</span>
+              <div class="discovery-copy"><h3 id="discovery-title-wellness">UN MOMENTO PARA VOS</h3><p>Explorá actividades para conectar con tu cuerpo, tu mente y el entorno.</p><a class="discovery-more" href="#programacion">Descubrí más <span aria-hidden="true">↗</span><span class="visually-hidden"> sobre bienestar en la programación</span></a></div>
+            </article>
+            <button class="discovery-reset" type="button" hidden>Volver a explorar <span aria-hidden="true">↺</span></button>
+          </div>
+          <p class="visually-hidden discovery-status" role="status" aria-live="polite" aria-atomic="true"></p>
+        </section>
         <div class="row g-3 mt-4">
           <div class="col-md-4 reveal"><article class="feature-card feature-card-dark"><span class="feature-index">01 / EXPLORÁ</span><img class="feature-photo" src="assets/planta.png" alt="Una planta crece entre las manos" width="320" height="320" loading="lazy" decoding="async"><h3 class="mask-reveal">Descubrir</h3><p>Conocé a las personas detrás de cada emprendimiento. Descubrí cómo se hacen los productos, qué materiales eligen y qué decisiones abren otras maneras de consumir.</p></article></div>
           <div class="col-md-4 reveal"><article class="feature-card feature-card-light"><span class="feature-index">02 / PARTICIPÁ</span><img class="feature-photo" src="assets/pintura.png" alt="Estampado con hojas naturales" width="320" height="320" loading="lazy" decoding="async"><h3 class="mask-reveal">Participar</h3><p>Acercate a un taller, hacé preguntas y probá algo por primera vez. Las experiencias participativas invitan a aprender haciendo, con propuestas para distintas edades e intereses.</p></article></div>

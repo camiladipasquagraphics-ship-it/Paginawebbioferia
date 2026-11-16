@@ -1,6 +1,84 @@
 
 'use strict';
 
+// Independent of Bootstrap/GSAP: disclosure buttons also work with touch and keyboard.
+(() => {
+  const section = document.getElementById('descubri');
+  if (!section) return;
+  const orbits = section.querySelector('.discovery-orbits');
+  const buttons = [...section.querySelectorAll('[data-discovery]')];
+  const panels = buttons.map(button => document.getElementById(button.getAttribute('aria-controls')));
+  const idle = section.querySelector('.discovery-idle');
+  const reset = section.querySelector('.discovery-reset');
+  const status = section.querySelector('.discovery-status');
+  let selected = null;
+
+  function select(button, announce = true) {
+    selected = button;
+    buttons.forEach((item, index) => {
+      const active = item === button;
+      item.classList.toggle('is-active', active);
+      item.setAttribute('aria-expanded', String(active));
+      panels[index].hidden = !active;
+    });
+    orbits.classList.toggle('has-selection', !!button);
+    idle.hidden = !!button;
+    reset.hidden = !button;
+    if (announce) {
+      status.textContent = button
+        ? panels[buttons.indexOf(button)].querySelector('h3').textContent + '. Experiencia abierta debajo de los círculos.'
+        : 'Todas las experiencias disponibles. Elegí un círculo para descubrir más.';
+    }
+    // Expanded copy can change document height; keep existing scroll animations aligned.
+    if (window.ScrollTrigger) window.ScrollTrigger.refresh();
+  }
+
+  buttons.forEach((button, index) => {
+    button.addEventListener('click', () => select(selected === button ? null : button));
+    button.addEventListener('keydown', event => {
+      let next;
+      if (event.key === 'ArrowRight' || event.key === 'ArrowDown') next = (index + 1) % buttons.length;
+      if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') next = (index - 1 + buttons.length) % buttons.length;
+      if (event.key === 'Home') next = 0;
+      if (event.key === 'End') next = buttons.length - 1;
+      if (next === undefined) return;
+      event.preventDefault();
+      buttons[next].focus();
+    });
+    // Keep the category and its color visible if a local photograph cannot load.
+    const image = button.querySelector('img');
+    const hideFailedImage = () => { image.hidden = true; };
+    image.addEventListener('error', hideFailedImage, { once: true });
+    if (image.complete && !image.naturalWidth) hideFailedImage();
+  });
+  function clear() {
+    const previous = selected;
+    select(null);
+    if (previous) previous.focus({ preventScroll: true });
+  }
+  reset.addEventListener('click', clear);
+  section.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && selected) {
+      event.preventDefault();
+      clear();
+    }
+  });
+  select(null, false);
+  section.classList.add('is-ready');
+  orbits.hidden = false;
+  // A fully closed circular mask can defer native lazy loading until the first click.
+  // Prepare the four existing assets as the section approaches the viewport.
+  const preparePhotos = () => buttons.forEach(button => { button.querySelector('img').loading = 'eager'; });
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      if (!entries.some(entry => entry.isIntersecting)) return;
+      preparePhotos();
+      observer.disconnect();
+    }, { rootMargin: '300px' });
+    observer.observe(section);
+  } else preparePhotos();
+})();
+
 // Reserve the fixed footer's actual height, including wrapped links on small screens.
 (() => {
   const footer=document.querySelector('.site-footer');
