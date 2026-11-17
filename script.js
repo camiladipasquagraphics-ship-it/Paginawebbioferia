@@ -93,31 +93,33 @@ const products=[
   {id:'vaso',name:'Vaso reutilizable',description:'Un vaso para acompañarte en nuevas experiencias.',price:12000},
   {id:'tote',name:'Bolsa de malla',description:'Una bolsa reutilizable para acompañarte todos los días.',price:9500},
   {id:'llavero',name:'Llavero circular',description:'Una pequeña pieza inspirada en los ciclos.',price:4500},
-  {id:'remera',name:'Remera oficial',description:'Dos diseños para llevar el espíritu de Bioferia con vos.',price:18000},
+  {id:'kit',name:'Kit de cuidado consiente',description:'Tu rutina de higiene personal sustentable: jabón sólido, desodorante sólido, pasta de dientes sólida, cepillo de bambú y esponja de luffa en un neceser reutilizable.',price:18000},
   {id:'abanico',name:'Abanico plegable',description:'Un objeto práctico de edición especial.',price:7000}
 ];
 const formatARS=n=>new Intl.NumberFormat('es-AR',{style:'currency',currency:'ARS',maximumFractionDigits:0}).format(n);
-const merchViews={vaso:['Turquesa','Verde lima'],tote:['Colección de colores','En uso'],llavero:['Turquesa','Verde lima'],remera:['Azul y lima','Blanca y turquesa'],abanico:['Azul y turquesa','Verde lima']};
+const merchViews={vaso:['Turquesa','Verde lima'],tote:['Colección de colores','En uso'],llavero:['Turquesa','Verde lima'],kit:['Kit completo'],abanico:['Azul y turquesa','Verde lima']};
 const merchSelection=Object.fromEntries(products.map(p=>[p.id,0]));
 const merchImage=product=>{
   const index=merchSelection[product.id];
+  const count=merchViews[product.id].length;
   return `<div class="merch-photo-holder merch-viewer" data-product-view="${product.id}" role="group" aria-label="Fotos de ${product.name}">
     <button type="button" class="merch-zoom" aria-label="Ampliar imagen de ${product.name}"><img src="assets/merch/${product.id}-${index+1}.png" alt="${product.name}: ${merchViews[product.id][index]}" loading="lazy" decoding="async"></button>
-    <button type="button" class="merch-photo-arrow merch-photo-prev" data-merch-step="-1" aria-label="Ver foto anterior de ${product.name}">←</button>
-    <button type="button" class="merch-photo-arrow merch-photo-next" data-merch-step="1" aria-label="Ver foto siguiente de ${product.name}">→</button>
-    <span class="merch-view-label" aria-live="polite">${merchViews[product.id][index]} · ${index+1}/2</span>
+    ${count>1?`<button type="button" class="merch-photo-arrow merch-photo-prev" data-merch-step="-1" aria-label="Ver foto anterior de ${product.name}">←</button>
+    <button type="button" class="merch-photo-arrow merch-photo-next" data-merch-step="1" aria-label="Ver foto siguiente de ${product.name}">→</button>`:''}
+    <span class="merch-view-label" aria-live="polite">${merchViews[product.id][index]}${count>1?` · ${index+1}/${count}`:''}</span>
   </div>`;
 };
 // Keep the same view in the card and the product detail.
 document.addEventListener('click',event=>{
   const arrow=event.target.closest('[data-merch-step]');if(!arrow)return;
   const viewer=arrow.closest('[data-product-view]');const id=viewer.dataset.productView;
-  const index=(merchSelection[id]+Number(arrow.dataset.merchStep)+2)%2;
+  const count=merchViews[id].length;
+  const index=(merchSelection[id]+Number(arrow.dataset.merchStep)+count)%count;
   merchSelection[id]=index;
   document.querySelectorAll(`[data-product-view="${id}"]`).forEach(view=>{
     const img=view.querySelector('img');img.src=`assets/merch/${id}-${index+1}.png`;
     img.alt=`${products.find(p=>p.id===id).name}: ${merchViews[id][index]}`;
-    view.querySelector('.merch-view-label').textContent=`${merchViews[id][index]} · ${index+1}/2`;
+    view.querySelector('.merch-view-label').textContent=`${merchViews[id][index]} · ${index+1}/${count}`;
   });
 });
 const grid=document.getElementById('merchGrid');
@@ -392,12 +394,15 @@ contactForm?.addEventListener('submit',event=>{
     const index=merchSelection[product.id];
     image.src=`assets/merch/${product.id}-${index+1}.png`;
     image.alt=`${product.name}: ${merchViews[product.id][index]}`;
-    caption.textContent=`${product.name} · ${merchViews[product.id][index]} · ${index+1}/2`;
+    const count=merchViews[product.id].length;
+    caption.textContent=`${product.name} · ${merchViews[product.id][index]}${count>1?` · ${index+1}/${count}`:''}`;
+    dialog.querySelector('.lightbox-prev').hidden=count<2;
+    dialog.querySelector('.lightbox-next').hidden=count<2;
   }
   function step(){
     // Reuse card controls to keep all views synchronized.
     const control=document.querySelector(`[data-product-view="${product.id}"] [data-merch-step="1"]`);
-    control.click();render();
+    if(control){control.click();render();}
   }
   document.addEventListener('click',event=>{
     const zoom=event.target.closest('.merch-zoom');if(!zoom)return;
